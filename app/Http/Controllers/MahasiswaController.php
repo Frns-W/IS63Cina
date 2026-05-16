@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Mahasiswas;
+use App\Models\Mahasiswa;
 use App\Models\Jurusan;
 
 class MahasiswaController extends Controller
@@ -13,7 +13,7 @@ class MahasiswaController extends Controller
      */
     public function index()
     {
-        $mahasiswa = Mahasiswas::all();
+        $mahasiswa = Mahasiswa::all();
         return view ('mahasiswa.index', compact('mahasiswa'));
     }
 
@@ -37,7 +37,7 @@ class MahasiswaController extends Controller
         $request->validate([
             'nim' => 'required|unique:mahasiswas,nim',
             'nama' => 'required',
-            'jurusan' => 'required|exists:jurusans,nama',
+            'jurusan' => 'required|exists:jurusan,nama',
             'tempat_lahir' => 'required',
             'tanggal_lahir' => 'required|date',
             'no_handphone' => 'required|numeric',
@@ -47,7 +47,7 @@ class MahasiswaController extends Controller
             'tahun_masuk' => 'required|numeric',
         ]);
 
-        $mahasiswa = Mahasiswas::create([
+        $mahasiswa = Mahasiswa::create([
             'nim' => $request->nim,
             'nama' => $request->nama,
             'jurusan' => $request->jurusan,
@@ -77,7 +77,7 @@ class MahasiswaController extends Controller
      */
     public function edit(string $id)
     {
-        $mahasiswa = Mahasiswas::find($id);
+        $mahasiswa = Mahasiswa::find($id);
         $jurusan = Jurusan::all();
         return view('mahasiswa.edit', compact('mahasiswa', 'jurusan'));
     }
@@ -90,7 +90,7 @@ class MahasiswaController extends Controller
         $request->validate([
             'nim' => 'required|unique:mahasiswas,nim,' . $id,
             'nama' => 'required',
-            'jurusan' => 'required|exists:jurusans,nama',
+            'jurusan' => 'required|exists:jurusan,nama',
             'tempat_lahir' => 'required',
             'tanggal_lahir' => 'required|date',
             'no_handphone' => 'required|numeric|unique:mahasiswas,nohp,' . $id,
@@ -100,7 +100,7 @@ class MahasiswaController extends Controller
             'tahun_masuk' => 'required|numeric',
         ]);
 
-        $mahasiswa = Mahasiswas::findOrFail($id);
+        $mahasiswa = Mahasiswa::findOrFail($id);
         $mahasiswa->update([
             'nim' => $request->nim,
             'nama' => $request->nama,
@@ -122,7 +122,7 @@ class MahasiswaController extends Controller
      */
     public function destroy(string $id)
     {
-        $mahasiswa = Mahasiswas::findOrFail($id);
+        $mahasiswa = Mahasiswa::findOrFail($id);
         $mahasiswa->delete();
 
         return redirect('/mahasiswa')->with(['success' => 'Data mahasiswa berhasil dihapus.']);

@@ -7,10 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Jurusan extends Model
 {
-    use HasFactory;
 
+    use HasFactory;
     protected $fillable = [
         'kode',
         'nama',
     ];
 }
+

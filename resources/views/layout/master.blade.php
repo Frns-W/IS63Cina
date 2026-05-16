@@ -43,7 +43,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item">
-                <a class="nav-link" href="master.html">
+                <a class="nav-link" href="index.html">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Halaman Muka</span></a>
             </li>
@@ -136,7 +136,7 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="tables.html">
+                <a class="nav-link" href="/jurusan">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Data Jurusan</span></a>
             </li>
